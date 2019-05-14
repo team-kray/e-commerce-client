@@ -17,9 +17,13 @@ const onShowOrders = function (event) {
 }
 
 const onUpdateOrder = function (event) {
+  console.log(event)
   event.preventDefault()
+
   const data = getFormFields(event.target)
+  console.log("DATA IS", data)
   const id = $(event.target).data('id')
+  console.log("ID IS", id)
   api.updateOrder(data, id)
     .then(ui.updateOrderSuccess)
     .catch(ui.failure)

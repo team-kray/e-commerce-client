@@ -22,4 +22,6 @@ $(() => {
   $('#sign-out').hide()
   $('#change-password').hide()
   $('document').ready(actions.onGetItems)
+  $('document').ready('.add-to-cart').hide()
+  $(document).on('click', '.add-to-cart', actions.onUpdateOrder)
 })

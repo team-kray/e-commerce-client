@@ -29,6 +29,7 @@ const signInSuccess = function (data) {
     $('.messages').text('').hide()
   }, 2000)
   $('.hidden').show()
+  $('.add-to-cart').show()
 }
 
 const signInFailure = function (data) {

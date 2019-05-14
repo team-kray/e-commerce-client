@@ -1,9 +1,9 @@
 {{#each items as |item|}}
   <section data-id="{{item.id}}">
     <div class="col-6 card text-white bg-dark col-12">
-<form>
+
     <h6>Item</h6><h3>
-    {{item.name}}
+      {{item.name}}
     </h3>
 
     <h6>Price</h6>
@@ -34,10 +34,10 @@
         {{/if}}
       </p>
       <div class="hidden">
-        <button data-id="{{item.id}}" class="add-to-cart hidden btn btn-outline-info col-4 btn-sm">Add to Cart</button>
+        <button data-id="{{item.id}}" class="add-to-cart btn btn-outline-danger col-4 btn-sm delete">Remove from Cart</button>
       </div>
-  </form>
     </div>
   </section>
 
 {{/each}}
+<button class="btn btn-outline-info col-4 btn-sm checkout">Checkout</button>

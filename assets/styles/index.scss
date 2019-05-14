@@ -1,1 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
+
+.items {
+  display: flex;
+}
+
+.photos img {
+  max-height: 300px;
+  max-width: 300px;
+}
+
+.hidden {
+  display: none;
+}
