@@ -12,6 +12,32 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+
+      <nav class="navbar navbar-dark bg-dark">
+        <form id="sign-in" class="row">
+          <input type="email" class="form-control col-md-3" name="credentials[email]" placeholder="email" required>
+          <input type="password" class="form-control col-md-3" name="credentials[password]" placeholder="password">
+          <input type="submit" class = "btn btn-outline-info btn-sm" value="sign in">
+        </form>
+        <form id="sign-up" class="row">
+          <input type="email" class="form-control col-md-3" name="credentials[email]" placeholder="email" required>
+          <input type="password" class="form-control col-md-3" name="credentials[password]" placeholder="password">
+          <input type="password" class="form-control col-md-4" name="credentials[password_confirmation]" placeholder="password confirmation">
+          <input type="submit" class = "btn btn-outline-info btn-sm" value="sign up">
+        </form>
+        <form id="sign-out" class="row">
+          <input type="submit" class = "btn btn-outline-info btn-sm" value="sign out">
+        </form>
+        <form id="change-password" class="row">
+          <input type="password" class="form-control col-md-4" name="passwords[old]" placeholder="oldpassword">
+          <input type="password" class="form-control col-md-4" name="passwords[new]" placeholder="newpassword">
+          <input type="submit" class = "btn btn-outline-info btn-sm" value="change password">
+        </form>
+      </nav>
+
+
+      <div id="messages" class="messages">
+      </div>
+
     </body>
 </html>
