@@ -1,7 +1,13 @@
-//
-// const getItemsSuccess =
-//   //handlebars, display all available items
-//
+const showItemsTemplate = require('../templates/items.handlebars')
+
+const getItemsSuccess = function (data) {
+  const showItemsHtml = showItemsTemplate({ items: data.items })
+
+  $('.items').html(showItemsHtml)
+}
+
+// handlebars, display all available items
+
 // const showOrdersSuccess =
 //   // show all orders that have been "closed"
 //
@@ -13,14 +19,14 @@
 //   // the order, do not delete items themselves
 //
 //
-// const failure = (error) => {
-//   console.error(error)
-// }
+const failure = (error) => {
+  console.error(error)
+}
 //
-// module.exports = {
-//   getItemsSuccess,
-//   showOrdersSuccess,
-//   updateOrderSuccess,
-//   destroyOrderSuccess,
-//   failure
-// }
+module.exports = {
+  getItemsSuccess,
+  failure
+  //   showOrdersSuccess,
+  //   updateOrderSuccess,
+  //   destroyOrderSuccess,
+}

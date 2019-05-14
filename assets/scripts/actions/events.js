@@ -3,7 +3,7 @@ const api = require('./api')
 const ui = require('./ui')
 
 const onGetItems = function (event) {
-  event.preventDefault()
+  // event.preventDefault()
   api.getItems()
     .then(ui.getItemsSuccess)
     .catch(ui.failure)

@@ -1,6 +1,6 @@
 {{#each items as |item|}}
   <section data-id="{{item.id}}">
-    <div class="col-4 card text-white bg-dark col-6">
+    <div class="col-4 card text-white bg-dark col-62">
 
     <h6>Item</h6><h3>
       {{item.name}}
@@ -24,21 +24,16 @@
       {{/if}}
     </p>
 
-
 <!-- //photo -->
-    <h6></h6>
-    <p>
-      {{#if item.imgURL}}
-        {{item.imgURL}}
-      {{else}}
-        No category provided.
-      {{/if}}
-    </p>
-
-    <button data-id="{{grocery.id}}" class="btn btn-outline-danger col-4 btn-sm delete">Remove</button>
-  </div>
-</div>
-</div>
+      <h6></h6>
+      <p>
+        {{#if item.imgUrl}}
+        <img src="{{item.imgUrl}}">
+        {{else}}
+          No category provided.
+        {{/if}}
+      </p>
+    </div>
   </section>
 
 {{/each}}
