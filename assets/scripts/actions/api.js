@@ -23,28 +23,27 @@ const updateOrder = function (data, id) {
     url: config.apiUrl + `/orders/${id}`,
     method: 'PATCH',
     headers: {
-    authorization: 'Token token=' + store.user.token
-  },
+      authorization: 'Token token=' + store.user.token
+    },
     data: {
       // data.<resource>.<name of form fields>
       'order': {
-        'item': data.item.id
+        'item': data.item.id,
         'open': data.order.open
       }
     }
   })
 }
 
-const destroyOrder = function () {
+const destroyOrder = function (id) {
   return $.ajax({
     url: config.apiUrl + `/orders/${id}`,
     method: 'DELETE',
     headers: {
-    authorization: 'Token token=' + store.user.token
-  },
+      authorization: 'Token token=' + store.user.token
+    }
   })
 }
-
 
 module.exports = {
   getItems,

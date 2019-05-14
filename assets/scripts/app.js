@@ -15,9 +15,8 @@ $(() => {
   $('#sign-out').on('submit', auth.onSignOut)
   $('#change-password').on('submit', auth.onChangePassword)
   $('#get-all').on('submit', actions.onGetItems)
-  $('#get-orders').on('submit',)
+  $('#get-orders').on('submit')
   $('#delete-item').on('submit')
   $('#show-orders').on('submit')
   $('#on-purchase').on('submit')
-
 })
