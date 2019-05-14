@@ -19,4 +19,5 @@ $(() => {
   $('#delete-item').on('submit')
   $('#show-orders').on('submit')
   $('#on-purchase').on('submit')
+
 })

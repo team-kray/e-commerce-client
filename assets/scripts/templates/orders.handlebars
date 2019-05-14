@@ -1,0 +1,44 @@
+{{#each items as |item|}}
+  <section data-id="{{item.id}}">
+    <div class="col-4 card text-white bg-dark col-6">
+
+    <h6>Item</h6><h3>
+      {{item.name}}
+    </h3>
+
+    <h6>Price</h6>
+    <p>
+      {{#if item.price}}
+        {{item.price}}
+      {{else}}
+        No category provided.
+      {{/if}}
+    </p>
+
+    <h6>Description</h6>
+    <p>
+      {{#if item.description}}
+        {{item.description}}
+      {{else}}
+        No category provided.
+      {{/if}}
+    </p>
+
+
+<!-- //photo -->
+    <h6></h6>
+    <p>
+      {{#if item.imgURL}}
+        {{item.imgURL}}
+      {{else}}
+        No category provided.
+      {{/if}}
+    </p>
+
+    <button data-id="{{grocery.id}}" class="btn btn-outline-danger col-4 btn-sm delete">Remove</button>
+  </div>
+</div>
+</div>
+  </section>
+
+{{/each}}
