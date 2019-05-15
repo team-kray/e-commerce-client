@@ -47,6 +47,7 @@ const addHandlers = function () {
   $(document).on('click', '.add-to-cart', onUpdateOrder)
   $('document').ready('.add-to-cart').hide()
   $('.view-cart').on('click', onViewCart)
+  $('document').ready('.remove-from-cart', onRemoveFromCart)
   // $('#get-orders').on('submit')
   // $('#delete-item').on('submit')
   // $('#show-orders').on('submit')
