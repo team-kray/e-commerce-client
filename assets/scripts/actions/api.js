@@ -12,6 +12,15 @@ const getItem = function (id) {
   return $.ajax({
     url: config.apiUrl + `/items/${id}`,
     method: 'GET'
+    // data: {
+    //   'item': []
+    //     'id': data.item._id
+    // //     // 'price':
+    // //     // 'description':
+    // //     // 'imgUrl':
+    // //     // 'owner':
+    //   }
+
   })
 }
 
@@ -25,7 +34,7 @@ const showOrders = function (id) {
   })
 }
 
-const updateOrder = function (data) {
+const updateOrder = function () {
   return $.ajax({
     url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
     method: 'PATCH',
@@ -37,11 +46,11 @@ const updateOrder = function (data) {
         'owner': store.user._id,
         'items': [
           {
-            'item': store.itemObj.item._id
-            // 'name': store.itemObj.item.name,
-            // 'price': store.itemObj.item.price,
-            // 'description': store.itemObj.item.description,
-            // 'imgUrl': store.itemObj.item.imgUrl
+            'item': store.itemObj.item
+          // 'name': store.itemObj.item.name,
+          // 'price': store.itemObj.item.price,
+          // 'description': store.itemObj.item.description,
+          // 'imgUrl': store.itemObj.item.imgUrl
           }
         ]
       }

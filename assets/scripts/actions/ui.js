@@ -18,13 +18,16 @@ const createOrderSuccess = function (data) {
   console.log(store.currentOrder)
 }
 
-const updateOrderSuccess = function (data) {
+const updateOrderSuccess = function () {
   console.log('THIS IS THE NEW CART', store.currentOrder)
+  store.currentOrder.order.items.push(store.itemObj.item)
+  // console.log('ITEMS', store.order.items)
+
+  const showCartHtml = showCartTemplate({ orders: store.currentOrder.order.items })
+  $('.cart').html(showCartHtml)
 }
 
 const getCurrentOrderSuccess = function (data) {
-  const showCartHtml = showCartTemplate({ order: data.order })
-  $('.cart').html(showCartHtml)
 }
 
 // const showOrdersSuccess =
