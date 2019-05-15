@@ -1,8 +1,10 @@
 {{#each items as |item|}}
-  <section data-id="{{item.id}}">
+{{log item}}
+  <section data-id="{{item._id}}">
     <div class="col-6 card text-white bg-dark col-12">
-<form>
-    <h6>Item</h6><h3>
+
+    <h6>Item</h6>
+    <h3>
     {{item.name}}
     </h3>
 
@@ -11,7 +13,7 @@
       {{#if item.price}}
         {{item.price}}
       {{else}}
-        No category provided.
+        No price provided.
       {{/if}}
     </p>
 
@@ -20,7 +22,7 @@
       {{#if item.description}}
         {{item.description}}
       {{else}}
-        No category provided.
+        No description provided.
       {{/if}}
     </p>
 
@@ -30,13 +32,13 @@
         {{#if item.imgUrl}}
         <img src="{{item.imgUrl}}">
         {{else}}
-          No category provided.
+          No photo provided.
         {{/if}}
       </p>
       <div class="hidden">
-        <button data-id="{{item.id}}" class="add-to-cart hidden btn btn-outline-info col-4 btn-sm">Add to Cart</button>
+        <button data-id="{{item._id}}" class="add-to-cart hidden btn btn-outline-info col-4 btn-sm">Add to Cart</button>
       </div>
-  </form>
+
     </div>
   </section>
 
