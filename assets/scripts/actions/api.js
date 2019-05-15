@@ -43,16 +43,10 @@ const updateOrder = function () {
     },
     data: {
       'order': {
-        'owner': store.user._id,
-        'items': [
+        'items':
           {
             'item': store.itemObj.item
-          // 'name': store.itemObj.item.name,
-          // 'price': store.itemObj.item.price,
-          // 'description': store.itemObj.item.description,
-          // 'imgUrl': store.itemObj.item.imgUrl
           }
-        ]
       }
     }
   })
