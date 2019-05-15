@@ -8,6 +8,13 @@ const getItems = function () {
   })
 }
 
+const getItem = function (id) {
+  return $.ajax({
+    url: config.apiUrl + `/items/${id}`,
+    method: 'GET'
+  })
+}
+
 const showOrders = function (id) {
   return $.ajax({
     url: config.apiUrl + `/orders/${id}`,
@@ -18,36 +25,72 @@ const showOrders = function (id) {
   })
 }
 
-const updateOrder = function (data, id) {
+const updateOrder = function (data) {
   return $.ajax({
-    url: config.apiUrl + `/orders/${id}`,
+    url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
     method: 'PATCH',
     headers: {
       authorization: 'Token token=' + store.user.token
     },
     data: {
-      // data.<resource>.<name of form fields>
       'order': {
-        'item': data.item.id,
-        'open': data.order.open
+        'owner': store.user._id,
+        'items': [
+          {
+            'item': store.itemObj.item._id
+            // 'name': store.itemObj.item.name,
+            // 'price': store.itemObj.item.price,
+            // 'description': store.itemObj.item.description,
+            // 'imgUrl': store.itemObj.item.imgUrl
+          }
+        ]
       }
     }
   })
 }
 
-const destroyOrder = function (id) {
+const createOrder = function () {
   return $.ajax({
-    url: config.apiUrl + `/orders/${id}`,
-    method: 'DELETE',
+    url: config.apiUrl + '/orders',
+    method: 'POST',
+    headers: {
+      authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'order': {
+        'owner': store.user._id
+      }
+    }
+  })
+}
+
+const getCurrentOrder = function () {
+  return $.ajax({
+    url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
+    method: 'GET',
     headers: {
       authorization: 'Token token=' + store.user.token
     }
   })
 }
 
+//
+// const destroyOrder = function (id) {
+//   return $.ajax({
+//     url: config.apiUrl + `/orders/${id}`,
+//     method: 'DELETE',
+//     headers: {
+//       authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
+
 module.exports = {
   getItems,
+  getItem,
   showOrders,
   updateOrder,
-  destroyOrder
+  createOrder,
+  getCurrentOrder
+  // destroyOrder
 }

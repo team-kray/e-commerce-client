@@ -9,33 +9,50 @@ const onGetItems = function (event) {
     .catch(ui.failure)
 }
 
-const onShowOrders = function (event) {
+const onUpdateOrder = (event) => {
   event.preventDefault()
-  api.showOrders()
-    .then(ui.showOrdersSuccess)
-    .catch(ui.failure)
-}
-
-const onUpdateOrder = function (event) {
-  console.log(event)
-  event.preventDefault()
-
-  const data = getFormFields(event.target)
-  console.log("DATA IS", data)
   const id = $(event.target).data('id')
-  console.log("ID IS", id)
-  api.updateOrder(data, id)
+  api.getItem(id)
+    .then(ui.getItemSuccess)
+    .then(api.updateOrder)
+    // updateOrderSuccess isn't logging the updated order
     .then(ui.updateOrderSuccess)
     .catch(ui.failure)
 }
 
-const onDestroyOrder = function (event) {
+const onViewCart = function (event) {
   event.preventDefault()
+  api.getCurrentOrder()
+    .then(ui.getCurrentOrderSuccess)
+    .catch(ui.failure)
+}
 
+// const onCreateOrder = function () {
+//
+// }
+
+// const onShowOrders = function (event) {
+//   event.preventDefault()
+//   api.showOrders()
+//   .then(ui.showOrdersSuccess)
+//   .catch(ui.failure)
+// }
+
+// const onDestroyOrder = function (event) {
+//   event.preventDefault()
+// }
+
+const addHandlers = function () {
+  $('document').ready(onGetItems)
+  $(document).on('click', '.add-to-cart', onUpdateOrder)
+  $('document').ready('.add-to-cart').hide()
+  $('.view-cart').on('click', onViewCart)
+  // $('#get-orders').on('submit')
+  // $('#delete-item').on('submit')
+  // $('#show-orders').on('submit')
+  // $('#on-purchase').on('submit')
 }
 
 module.exports = {
-  onGetItems,
-  onShowOrders,
-  onUpdateOrder
+  addHandlers
 }
