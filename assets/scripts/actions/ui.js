@@ -17,14 +17,15 @@ const createOrderSuccess = function (data) {
   console.log('stored cart:', store.currentOrder)
 }
 
-const updateOrderSuccess = function (data) {
+const updateOrderSuccess = function () {
   console.log('update order success, check database to see updated order')
+  store.currentOrder.order.items.push(store.itemObj.item)
+  const showCartHtml = showCartTemplate({ items: store.currentOrder.order.items })
+  $('.cart').html(showCartHtml)
 }
 
 const getCurrentOrderSuccess = function (data) {
   console.log('the data is', data)
-  const showCartHtml = showCartTemplate({ order: data.order })
-  $('.cart').html(showCartHtml)
 }
 
 const failure = (error) => {

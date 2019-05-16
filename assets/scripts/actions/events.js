@@ -19,17 +19,10 @@ const onUpdateOrder = (event) => {
     .catch(ui.failure)
 }
 
-const onViewCart = function (event) {
-  event.preventDefault()
-  api.getCurrentOrder()
-    .then(ui.getCurrentOrderSuccess)
-    .catch(ui.failure)
-}
-
 const addHandlers = function () {
   $('document').ready(onGetItems)
   $(document).on('click', '.add-to-cart', onUpdateOrder)
-  $('.view-cart').on('click', onViewCart)
+  $('.view-cart').on('click', event => event.preventDefault())
 }
 
 module.exports = {
