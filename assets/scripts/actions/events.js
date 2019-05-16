@@ -1,4 +1,5 @@
-const getFormFields = require('./../../../lib/get-form-fields')
+// const getFormFields = require('./../../../lib/get-form-fields')
+const store = require('../store')
 const api = require('./api')
 const ui = require('./ui')
 
@@ -15,42 +16,29 @@ const onUpdateOrder = (event) => {
   api.getItem(id)
     .then(ui.getItemSuccess)
     .then(api.updateOrder)
-    // updateOrderSuccess isn't logging the updated order
     .then(ui.updateOrderSuccess)
     .catch(ui.failure)
 }
 
-const onViewCart = function (event) {
+const stripeCheckout = StripeCheckout.configure({
+  key: 'pk_test_Ba2NFx0UbzDjWo1LB87WJXYN',
+  locale: 'auto',
+  token: 12345
+})
+
+const onCheckout = (event) => {
   event.preventDefault()
-  api.getCurrentOrder()
-    .then(ui.getCurrentOrderSuccess)
-    .catch(ui.failure)
+  stripeCheckout.open({
+    name: 'That Hat',
+    amount: store.cartSum * 100
+  })
 }
-
-// const onCreateOrder = function () {
-//
-// }
-
-// const onShowOrders = function (event) {
-//   event.preventDefault()
-//   api.showOrders()
-//   .then(ui.showOrdersSuccess)
-//   .catch(ui.failure)
-// }
-
-// const onDestroyOrder = function (event) {
-//   event.preventDefault()
-// }
 
 const addHandlers = function () {
   $('document').ready(onGetItems)
   $(document).on('click', '.add-to-cart', onUpdateOrder)
-  $('document').ready('.add-to-cart').hide()
-  $('.view-cart').on('click', onViewCart)
-  // $('#get-orders').on('submit')
-  // $('#delete-item').on('submit')
-  // $('#show-orders').on('submit')
-  // $('#on-purchase').on('submit')
+  $('.view-cart').on('click', event => event.preventDefault())
+  $('.checkout').on('click', onCheckout)
 }
 
 module.exports = {

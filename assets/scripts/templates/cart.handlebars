@@ -1,39 +1,26 @@
-{{#each orders as |item|}}
-  <section data-id="{{order._id}}">
-    <div class="col-6 card text-white bg-dark col-12">
+{{#each items as |item|}}
+  <section data-id="{{item._id}}">
+    <div>
 
-          <h6>Item</h6>
-          <h3>
-          {{item.name}}
-          </h3>
+      <h6>Item</h6>
+      <h3>
+      {{item.name}}
+      </h3>
 
-          <h6>Price</h6>
-          <p>
-            {{#if item.price}}
-              {{item.price}}
-            {{else}}
-              No price provided.
-            {{/if}}
-          </p>
+      <h6>Price</h6>
+      <h3>
+        {{item.price}}
+      </h3>
 
-          <h6>Description</h6>
-          <p>
-            {{#if item.description}}
-              {{item.description}}
-            {{else}}
-              No description provided.
-            {{/if}}
-          </p>
-
-      <!-- //photo -->
-            <h6></h6>
-            <p class="photos">
-              {{#if item.imgUrl}}
-              <img src="{{item.imgUrl}}">
-              {{else}}
-                No photo provided.
-              {{/if}}
-            </p>
+      <h6>Description</h6>
+      <h3>
+        {{item.description}}
+      </h3>
+  <!-- photo -->
+        <h6></h6>
+        <p class="photos">
+          <img src="{{item.imgUrl}}">
+        </p>
 
       <button data-id="{{item._id}}" class="remove-from-cart btn btn-outline-danger col-4 btn-sm delete">Remove from Cart</button>
 
