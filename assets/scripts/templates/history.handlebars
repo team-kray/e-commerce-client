@@ -1,0 +1,19 @@
+{{#each orders as |order|}}
+  <section data-id="{{order._id}}">
+    <div>
+
+      <h6>Order</h6>
+      <h3>
+      {{order.createdAt}}
+      </h3>
+
+      <h6>Items</h6>
+      <h3>
+        {{order.items}}
+      </h3>
+    </div>
+    <p>= = = = = = = = = = = = = = = = = = = = = = = = = = = =</p>
+  </section>
+
+
+{{/each}}

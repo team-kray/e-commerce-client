@@ -8,6 +8,13 @@ const getItems = function () {
   })
 }
 
+const getItem = function (id) {
+  return $.ajax({
+    url: config.apiUrl + `/items/${id}`,
+    method: 'GET'
+  })
+}
+
 const showOrders = function (id) {
   return $.ajax({
     url: config.apiUrl + `/orders/${id}`,
@@ -18,27 +25,82 @@ const showOrders = function (id) {
   })
 }
 
-const updateOrder = function (data, id) {
+const updateOrder = function () {
   return $.ajax({
-    url: config.apiUrl + `/orders/${id}`,
+    url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
     method: 'PATCH',
     headers: {
       authorization: 'Token token=' + store.user.token
     },
     data: {
-      // data.<resource>.<name of form fields>
       'order': {
-        'item': data.item.id,
-        'open': data.order.open
+        'items':
+          {
+            'item': store.itemObj.item
+          }
       }
     }
   })
 }
 
-const destroyOrder = function (id) {
+const closeOrder = function () {
   return $.ajax({
-    url: config.apiUrl + `/orders/${id}`,
-    method: 'DELETE',
+    url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
+    method: 'PATCH',
+    headers: {
+      authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'order': {
+        'open': false
+      }
+    }
+  })
+}
+
+const createOrder = function () {
+  return $.ajax({
+    url: config.apiUrl + '/orders',
+    method: 'POST',
+    headers: {
+      authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'order': {
+        'owner': store.user._id
+      }
+    }
+  })
+}
+
+const getCurrentOrder = function () {
+  return $.ajax({
+    url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
+    method: 'GET',
+    headers: {
+      authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const stripeCheckout = (token) => {
+  return $.ajax({
+    url: config.apiUrl + '/charge',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'token': token,
+      'amount': parseInt(store.cartSum * 100)
+    }
+  })
+}
+
+const getClosedOrders = function () {
+  return $.ajax({
+    url: config.apiUrl + `/orders`,
+    method: 'GET',
     headers: {
       authorization: 'Token token=' + store.user.token
     }
@@ -47,7 +109,13 @@ const destroyOrder = function (id) {
 
 module.exports = {
   getItems,
+  getItem,
   showOrders,
   updateOrder,
-  destroyOrder
+  createOrder,
+  getCurrentOrder,
+  stripeCheckout,
+  closeOrder,
+  getClosedOrders
+  // destroyOrder
 }

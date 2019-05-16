@@ -1,9 +1,11 @@
 'use strict'
 const store = require('../store')
+const actionsApi = require('../actions/api')
+const actionsUi = require('../actions/ui')
 
 const signUpSuccess = function (data) {
   $('form').trigger('reset')
-  $('.messages').text(`sign up success`).show()
+  $('.messages').text(`Sign up success!`).show()
   setTimeout(() => {
     $('.messages').text('').hide()
   }, 2000)
@@ -11,7 +13,7 @@ const signUpSuccess = function (data) {
 
 const signUpFailure = function (data) {
   $('form').trigger('reset')
-  $('.messages').text(`something went wrong, try to sign up again!`).show()
+  $('.messages').text(`Something went wrong, please try again!`).show()
   setTimeout(() => {
     $('.messages').text('').hide()
   }, 2000)
@@ -24,16 +26,21 @@ const signInSuccess = function (data) {
   $('#sign-up').hide()
   $('#sign-in').hide()
   store.user = data.user
-  $('.messages').text(`welcome!`).show()
+  console.log(data.user)
+  $('.messages').text(`Welcome!`).show()
   setTimeout(() => {
     $('.messages').text('').hide()
   }, 2000)
   $('.hidden').show()
+  $('.add-to-cart').show()
+  actionsApi.createOrder()
+    .then(actionsUi.createOrderSuccess)
+    .catch(actionsUi.failure)
 }
 
 const signInFailure = function (data) {
   $('form').trigger('reset')
-  $('.messages').text(`oops! somethings wrong try again`).show()
+  $('.messages').text(`Something went wrong, please try again!`).show()
   setTimeout(() => {
     $('.messages').text('').hide()
   }, 2000)
@@ -41,7 +48,7 @@ const signInFailure = function (data) {
 
 const changePasswordSuccess = function (data) {
   $('form').trigger('reset')
-  $('.messages').text(`change password success!`).show()
+  $('.messages').text(`Change password success!`).show()
   setTimeout(() => {
     $('.messages').text('').hide()
   }, 2000)
@@ -49,7 +56,7 @@ const changePasswordSuccess = function (data) {
 
 const changePasswordFailure = function (data) {
   $('form').trigger('reset')
-  $('.messages').text(`change password error`).show()
+  $('.messages').text(`Something went wrong, please try again!`).show()
   setTimeout(() => {
     $('.messages').text('').hide()
   }, 2000)
@@ -62,7 +69,7 @@ const signOutSuccess = function () {
   $('#sign-up').show()
   $('#sign-in').show()
   $('#content').empty()
-  $('.messages').text(`see you next time!`).show()
+  $('.messages').text(`See you next time!`).show()
   setTimeout(() => {
     $('.messages').text(' ').hide()
   }, 2000)
@@ -71,7 +78,7 @@ const signOutSuccess = function () {
 
 const signOutFailure = function () {
   $('form').trigger('reset')
-  $('.messages').text(`somethings not working right`).show()
+  $('.messages').text(`Something went wrong, please try again!`).show()
   setTimeout(() => {
     $('.messages').text(' ').hide()
   }, 2000)
