@@ -43,6 +43,21 @@ const updateOrder = function () {
   })
 }
 
+const closeOrder = function () {
+  return $.ajax({
+    url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
+    method: 'PATCH',
+    headers: {
+      authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'order': {
+        'open': false
+      }
+    }
+  })
+}
+
 const createOrder = function () {
   return $.ajax({
     url: config.apiUrl + '/orders',
@@ -68,16 +83,29 @@ const getCurrentOrder = function () {
   })
 }
 
-//
-// const destroyOrder = function (id) {
-//   return $.ajax({
-//     url: config.apiUrl + `/orders/${id}`,
-//     method: 'DELETE',
-//     headers: {
-//       authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
+const stripeCheckout = (token) => {
+  return $.ajax({
+    url: config.apiUrl + '/charge',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'token': token,
+      'amount': parseInt(store.cartSum * 100)
+    }
+  })
+}
+
+const getClosedOrders = function () {
+  return $.ajax({
+    url: config.apiUrl + `/orders`,
+    method: 'GET',
+    headers: {
+      authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 
 module.exports = {
   getItems,
@@ -85,6 +113,9 @@ module.exports = {
   showOrders,
   updateOrder,
   createOrder,
-  getCurrentOrder
+  getCurrentOrder,
+  stripeCheckout,
+  closeOrder,
+  getClosedOrders
   // destroyOrder
 }

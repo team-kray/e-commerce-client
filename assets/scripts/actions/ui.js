@@ -1,5 +1,6 @@
 const showItemsTemplate = require('../templates/items.handlebars')
 const showCartTemplate = require('../templates/cart.handlebars')
+const showHistoryTemplate = require('../templates/history.handlebars')
 const store = require('../store')
 
 const getItemsSuccess = function (data) {
@@ -31,6 +32,12 @@ const getCurrentOrderSuccess = function (data) {
   console.log('the data is', data)
 }
 
+const getClosedOrdersSuccess = function (data) {
+  console.log('VIEWORDERS')
+  const showHistoryHtml = showHistoryTemplate({ orders: data.orders })
+  $('.orders').html(showHistoryHtml)
+}
+
 const failure = (error) => {
   console.error(error)
 }
@@ -41,5 +48,6 @@ module.exports = {
   createOrderSuccess,
   updateOrderSuccess,
   getCurrentOrderSuccess,
+  getClosedOrdersSuccess,
   failure
 }
