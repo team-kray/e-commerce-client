@@ -1,4 +1,5 @@
 // const getFormFields = require('./../../../lib/get-form-fields')
+const store = require('../store')
 const api = require('./api')
 const ui = require('./ui')
 
@@ -21,14 +22,15 @@ const onUpdateOrder = (event) => {
 
 const stripeCheckout = StripeCheckout.configure({
   key: 'pk_test_Ba2NFx0UbzDjWo1LB87WJXYN',
-  locale: 'auto'
+  locale: 'auto',
+  token: 12345
 })
 
 const onCheckout = (event) => {
   event.preventDefault()
   stripeCheckout.open({
     name: 'That Hat',
-    amount: '500'
+    amount: store.cartSum * 100
   })
 }
 

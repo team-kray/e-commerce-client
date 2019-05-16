@@ -9,11 +9,14 @@ const getItemsSuccess = function (data) {
 
 const getItemSuccess = function (data) {
   store.itemObj = data
+  store.cartSum += store.itemObj.item.price
   console.log('stored itemObj:', store.itemObj)
+  console.log(store.cartSum)
 }
 
 const createOrderSuccess = function (data) {
   store.currentOrder = data
+  store.cartSum = 0
   console.log('stored cart:', store.currentOrder)
 }
 
