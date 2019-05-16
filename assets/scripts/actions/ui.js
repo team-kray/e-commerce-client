@@ -18,7 +18,8 @@ const getItemSuccess = function (data) {
 const createOrderSuccess = function (data) {
   store.currentOrder = data
   store.cartSum = 0
-  console.log('stored cart:', store.currentOrder)
+  $('.cart').empty()
+  console.log('new order created, stored cart:', store.currentOrder)
 }
 
 const updateOrderSuccess = function () {
