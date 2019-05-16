@@ -10,33 +10,20 @@
 
     <h6>Price</h6>
     <p>
-      {{#if item.price}}
-        {{item.price}}
-      {{else}}
-        No price provided.
-      {{/if}}
+      {{item.price}}
     </p>
 
     <h6>Description</h6>
     <p>
-      {{#if item.description}}
-        {{item.description}}
-      {{else}}
-        No description provided.
-      {{/if}}
+      {{item.description}}
     </p>
 
 <!-- //photo -->
-      <h6></h6>
-      <p class="photos">
-        {{#if item.imgUrl}}
-        <img src="{{item.imgUrl}}">
-        {{else}}
-          No photo provided.
-        {{/if}}
-      </p>
+    <p class="photos">
+      <img src="{{item.imgUrl}}">
+    </p>
       <div class="hidden">
-        <button data-id="{{item._id}}" class="add-to-cart hidden btn btn-outline-info col-4 btn-sm">Add to Cart</button>
+        <button data-id="{{item._id}}" class="add-to-cart hidden">Add to Cart</button>
       </div>
 
     </div>
