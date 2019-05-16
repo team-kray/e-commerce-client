@@ -20,10 +20,17 @@ const onUpdateOrder = (event) => {
     .catch(ui.failure)
 }
 
+const token = function (token) {
+  console.log('token is:', token)
+  api.stripeCheckout(token)
+    .then(() => api.closeOrder())
+    .catch('checkout could not run')
+}
+
 const stripeCheckout = StripeCheckout.configure({
-  key: 'pk_test_Ba2NFx0UbzDjWo1LB87WJXYN',
+  key: 'pk_test_eWESnvJZAHAAuWxjeMrmOYrH00dsdAFmgI',
   locale: 'auto',
-  token: 12345
+  token: token
 })
 
 const onCheckout = (event) => {
@@ -34,11 +41,19 @@ const onCheckout = (event) => {
   })
 }
 
+const onGetClosedOrders = function (event) {
+  const id = $(event.target).data('id')
+  api.getClosedOrders(id)
+    .then(ui.getClosedOrdersSuccess)
+    .catch(ui.failure)
+}
+
 const addHandlers = function () {
   $('document').ready(onGetItems)
   $(document).on('click', '.add-to-cart', onUpdateOrder)
   $('.view-cart').on('click', event => event.preventDefault())
   $('.checkout').on('click', onCheckout)
+  $('.view-orders').on('click', onGetClosedOrders)
 }
 
 module.exports = {
