@@ -41,12 +41,12 @@
       <div id="messages" class="messages">
       </div>
 
-      <!-- Button trigger modal -->
+      <!-- Button trigger modal view cart-->
       <button type="button" class="view-cart btn btn-primary" data-toggle="modal" data-target="#view-cart-modal">
         View Cart
       </button>
 
-      <!-- Modal -->
+      <!-- Cart Modal -->
       <div class="modal fade" id="view-cart-modal" tabindex="-1" role="dialog" aria-labelledby="view-cart-modal-aria" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -66,6 +66,28 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Button trigger modal for view orders-->
+      <form id="view-orders" class="row" data-toggle="modal" data-target="#modal-show" class="btn btn-sm col-4 btn-outline-show">
+         <input type="submit" class = "view-orders btn btn-outline-success btn-sm" value="My Orders">
+       </form>
+
+       <!--MODAL SHOW ORDERS-->
+      <div id="modal-show" class="modal fade modal-xl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Past Orders</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="orders" class="orders"></div>
+            </div>
+        </div>
+      </div>
       </div>
 
       <div id="items" class="items">
