@@ -25,7 +25,7 @@ const showOrders = function (id) {
   })
 }
 
-const updateOrder = function () {
+const addToCart = function () {
   return $.ajax({
     url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
     method: 'PATCH',
@@ -38,6 +38,21 @@ const updateOrder = function () {
           {
             'item': store.itemObj.item
           }
+      }
+    }
+  })
+}
+
+const deleteFromCart = function () {
+  return $.ajax({
+    url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
+    method: 'PATCH',
+    headers: {
+      authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'order': {
+        'items': store.currentOrder.order.items
       }
     }
   })
@@ -107,15 +122,26 @@ const getClosedOrders = function () {
   })
 }
 
+// const deleteOrderItem = function () {
+//   return $.ajax({
+//     url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
+//     method: 'PATCH',
+//     headers: {
+//       authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
+
 module.exports = {
   getItems,
   getItem,
   showOrders,
-  updateOrder,
+  addToCart,
+  deleteFromCart,
   createOrder,
   getCurrentOrder,
   stripeCheckout,
   closeOrder,
   getClosedOrders
-  // destroyOrder
+  // deleteOrderItem
 }
