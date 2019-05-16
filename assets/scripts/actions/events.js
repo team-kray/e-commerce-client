@@ -19,10 +19,24 @@ const onUpdateOrder = (event) => {
     .catch(ui.failure)
 }
 
+const stripeCheckout = StripeCheckout.configure({
+  key: 'pk_test_Ba2NFx0UbzDjWo1LB87WJXYN',
+  locale: 'auto'
+})
+
+const onCheckout = (event) => {
+  event.preventDefault()
+  stripeCheckout.open({
+    name: 'That Hat',
+    amount: '500'
+  })
+}
+
 const addHandlers = function () {
   $('document').ready(onGetItems)
   $(document).on('click', '.add-to-cart', onUpdateOrder)
   $('.view-cart').on('click', event => event.preventDefault())
+  $('.checkout').on('click', onCheckout)
 }
 
 module.exports = {

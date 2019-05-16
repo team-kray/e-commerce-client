@@ -12,15 +12,6 @@ const getItem = function (id) {
   return $.ajax({
     url: config.apiUrl + `/items/${id}`,
     method: 'GET'
-    // data: {
-    //   'item': []
-    //     'id': data.item._id
-    // //     // 'price':
-    // //     // 'description':
-    // //     // 'imgUrl':
-    // //     // 'owner':
-    //   }
-
   })
 }
 

@@ -10,6 +10,8 @@
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="https://checkout.stripe.com/checkout.js"></script>
+
     </head>
     <body>
 
@@ -57,6 +59,7 @@
             <div class="modal-body">
               <!-- cart injected with handlebars -->
               <div class="cart">Cart empty!</div>
+              <button class="checkout">Checkout</button>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
