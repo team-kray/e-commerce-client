@@ -39,8 +39,9 @@ Throughout the project we had daily standups and used mob programming and pair p
 - Bugs/troubleshooting
 
 
-[ERD!](https://i.imgur.com/1JQanwT.png)
-[Wireframe!](https://i.imgur.com/xf3y2Tn.png)
+[ERD](https://i.imgur.com/1JQanwT.png)
+
+[Wireframe](https://i.imgur.com/xf3y2Tn.png)
 
 ### User Stories
 
