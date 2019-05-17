@@ -1,6 +1,6 @@
 # E-Commerce Team Project
 
-Created by [K Strickland](https://github.com/kstrickland0612), [Robbie Bixler](https://github.com/rrbixler), [Aiden Flynn](https://github.com/awf825) & [Yurii Yarema](https://github.com/yura85).
+#### Created by [K Strickland](https://github.com/kstrickland0612), [Robbie Bixler](https://github.com/rrbixler), [Aiden Flynn](https://github.com/awf825) & [Yurii Yarema](https://github.com/yura85).
 
 Welcome to our e-commerce app! This store sells hats modeled by adorable animals. Users can browse a catalog of hats without being logged in, and when they log in they are able to add items to their cart and go through checkout (integrated with Stripe). Users can also view past orders.  
 
