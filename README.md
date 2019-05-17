@@ -38,9 +38,10 @@ Throughout the project we had daily standups and used mob programming and pair p
 - README
 - Bugs/troubleshooting
 
-
+### ERD
 [ERD](https://i.imgur.com/1JQanwT.png)
 
+### Wireframe
 [Wireframe](https://i.imgur.com/xf3y2Tn.png)
 
 ### User Stories
@@ -88,7 +89,7 @@ This feature was confuding because it seems like we should be 'deleting' somethi
 
 ## Future Thinking
 
-Future improvements:
+#### Future improvements:
 * Make past order display only owned past order of signed in user (bug).
 * Add more information to past order display (currently shows timestamp).
 * Remove add to cart button for items already in cart.
