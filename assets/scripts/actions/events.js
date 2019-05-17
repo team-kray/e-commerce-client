@@ -13,6 +13,8 @@ const onGetItems = function (event) {
 const onaddToCart = (event) => {
   event.preventDefault()
   const id = $(event.target).data('id')
+  // $(`data-id-${id}`).remove()
+  $(`.addToCart[data-id=${id}]`).hide()
   api.getItem(id)
     .then(ui.getItemSuccess)
     .then(api.addToCart)
@@ -57,9 +59,7 @@ const onDeleteOrderItem = (event) => {
     .then(ui.getItemToRemoveSuccess)
     .then(api.deleteFromCart)
     .then(ui.deleteFromCartSuccess)
-    //
-    // .then(api.onaddToCart)
-    // .catch(ui.failure)
+    .catch(ui.failure)
 }
 
 const addHandlers = function () {
@@ -69,6 +69,7 @@ const addHandlers = function () {
   $('.checkout').on('click', onCheckout)
   $('.view-orders').on('click', onGetClosedOrders)
   $('#view-cart-modal').on('click', '.remove-from-cart', onDeleteOrderItem)
+  $('.checkout').hide()
 }
 
 module.exports = {

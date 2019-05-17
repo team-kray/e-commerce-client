@@ -52,7 +52,9 @@ const deleteFromCart = function () {
     },
     data: {
       'order': {
-        'items': store.currentOrder.order.items
+        'items': {
+          'item': store.itemObj.item
+        }
       }
     }
   })
@@ -88,15 +90,15 @@ const createOrder = function () {
   })
 }
 
-const getCurrentOrder = function () {
-  return $.ajax({
-    url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
-    method: 'GET',
-    headers: {
-      authorization: 'Token token=' + store.user.token
-    }
-  })
-}
+// const getCurrentOrder = function () {
+//   return $.ajax({
+//     url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
+//     method: 'GET',
+//     headers: {
+//       authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
 
 const stripeCheckout = (token) => {
   return $.ajax({
@@ -139,7 +141,6 @@ module.exports = {
   addToCart,
   deleteFromCart,
   createOrder,
-  getCurrentOrder,
   stripeCheckout,
   closeOrder,
   getClosedOrders

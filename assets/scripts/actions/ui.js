@@ -15,21 +15,8 @@ const getItemSuccess = function (data) {
   console.log(store.cartSum)
 }
 
-const getItemToRemoveSuccess = function (data) {
-  // console.log(data)
-  // console.log(store.currentOrder.order.items)
-  const itemsArray = store.currentOrder.order.items
-  const itemToRemove = data.item._id
-  console.log('item to remove:', itemToRemove)
-  const newItemsArray = itemsArray.filter(i => i._id !== itemToRemove)
-  store.filteredItems = newItemsArray
-  console.log('filtered array:', newItemsArray)
-  store.currentOrder.order.items = newItemsArray
-  store.cartSum -= store.itemObj.item.price
-  console.log(store.cartSum)
-}
-
 const createOrderSuccess = function (data) {
+  $('.checkout').hide()
   store.currentOrder = data
   store.cartSum = 0
   $('.cart').empty()
@@ -37,30 +24,40 @@ const createOrderSuccess = function (data) {
 }
 
 const addToCartSuccess = function () {
+  $('.checkout').show()
   console.log('update order success, check database to see updated order')
   store.currentOrder.order.items.push(store.itemObj.item)
   const showCartHtml = showCartTemplate({ items: store.currentOrder.order.items })
   $('.cart').html(showCartHtml)
 }
 
+const getItemToRemoveSuccess = function (data) {
+  store.itemObj = data
+  console.log('itemObj is:', store.itemObj)
+  store.cartSum -= store.itemObj.item.price
+  console.log(store.cartSum)
+  const itemsArray = store.currentOrder.order.items
+  console.log('item array:', itemsArray)
+  const itemToRemove = data.item._id
+  console.log('item to remove:', itemToRemove)
+  const newItemsArray = itemsArray.filter(i => i._id !== itemToRemove)
+  console.log('filtered array:', newItemsArray)
+  store.currentOrder.order.items = newItemsArray
+}
+
 const deleteFromCartSuccess = function () {
   console.log('update order success, check database to see updated order')
-  // store.currentOrder.order.items.push(store.filteredItems)
-  console.log('this is store.filteredItems:', store.filteredItems)
   if (store.currentOrder.order.items.length > 0) {
     const showCartHtml = showCartTemplate({ items: store.currentOrder.order.items })
     $('.cart').html(showCartHtml)
   } else {
     $('.cart').empty()
+    $('.checkout').hide()
   }
 }
 
-const getCurrentOrderSuccess = function (data) {
-  console.log('the data is', data)
-}
-
 const getClosedOrdersSuccess = function (data) {
-  console.log('VIEWORDERS')
+  console.log(data.orders)
   const showHistoryHtml = showHistoryTemplate({ orders: data.orders })
   $('.orders').html(showHistoryHtml)
 }
@@ -76,7 +73,6 @@ module.exports = {
   createOrderSuccess,
   addToCartSuccess,
   deleteFromCartSuccess,
-  getCurrentOrderSuccess,
   getClosedOrdersSuccess,
   failure
 }
