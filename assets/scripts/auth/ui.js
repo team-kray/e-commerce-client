@@ -25,6 +25,8 @@ const signInSuccess = function (data) {
   $('#sign-out').show()
   $('#sign-up').hide()
   $('#sign-in').hide()
+  $('.view-orders').show()
+  $('.view-cart').show()
   store.user = data.user
   $('.messages').text(`Welcome!`).show()
   setTimeout(() => {
@@ -65,6 +67,8 @@ const signOutSuccess = function () {
   $('form').trigger('reset')
   $('#change-password').hide()
   $('#sign-out').hide()
+  $('.view-orders').hide()
+  $('.view-cart').hide()
   $('#sign-up').show()
   $('#sign-in').show()
   $('#content').empty()
