@@ -1,18 +1,18 @@
 {{#each orders as |order|}}
   <section data-id="{{order._id}}">
-    <div>
+    <div class="card text-grey bg-light col-12">
 
-      <h6>Order</h6>
+      <h6>Order Time</h6>
       <h3>
       {{order.createdAt}}
       </h3>
 
-      <h6>Items</h6>
+      <!-- <h6>Items</h6>
       <h3>
-        {{order.items}}
-      </h3>
+        {{order.items.length}}
+      </h3> -->
     </div>
-    <p>= = = = = = = = = = = = = = = = = = = = = = = = = = = =</p>
+
   </section>
 
 

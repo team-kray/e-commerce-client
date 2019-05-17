@@ -11,29 +11,41 @@ const getItemsSuccess = function (data) {
 const getItemSuccess = function (data) {
   store.itemObj = data
   store.cartSum += store.itemObj.item.price
-  console.log('stored itemObj:', store.itemObj)
-  console.log(store.cartSum)
 }
 
 const createOrderSuccess = function (data) {
+  $('.checkout').hide()
   store.currentOrder = data
   store.cartSum = 0
-  console.log('stored cart:', store.currentOrder)
+  $('.cart').empty()
 }
 
-const updateOrderSuccess = function () {
-  console.log('update order success, check database to see updated order')
+const addToCartSuccess = function () {
+  $('.checkout').show()
   store.currentOrder.order.items.push(store.itemObj.item)
   const showCartHtml = showCartTemplate({ items: store.currentOrder.order.items })
   $('.cart').html(showCartHtml)
 }
 
-const getCurrentOrderSuccess = function (data) {
-  console.log('the data is', data)
+const getItemToRemoveSuccess = function (data) {
+  store.itemObj = data
+  const itemsArray = store.currentOrder.order.items
+  const itemToRemove = data.item._id
+  const newItemsArray = itemsArray.filter(i => i._id !== itemToRemove)
+  store.currentOrder.order.items = newItemsArray
+}
+
+const deleteFromCartSuccess = function () {
+  if (store.currentOrder.order.items.length > 0) {
+    const showCartHtml = showCartTemplate({ items: store.currentOrder.order.items })
+    $('.cart').html(showCartHtml)
+  } else {
+    $('.cart').empty()
+    $('.checkout').hide()
+  }
 }
 
 const getClosedOrdersSuccess = function (data) {
-  console.log('VIEWORDERS')
   const showHistoryHtml = showHistoryTemplate({ orders: data.orders })
   $('.orders').html(showHistoryHtml)
 }
@@ -45,9 +57,10 @@ const failure = (error) => {
 module.exports = {
   getItemsSuccess,
   getItemSuccess,
+  getItemToRemoveSuccess,
   createOrderSuccess,
-  updateOrderSuccess,
-  getCurrentOrderSuccess,
+  addToCartSuccess,
+  deleteFromCartSuccess,
   getClosedOrdersSuccess,
   failure
 }
