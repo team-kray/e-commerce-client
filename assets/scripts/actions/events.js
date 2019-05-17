@@ -23,7 +23,6 @@ const onaddToCart = (event) => {
 }
 
 const token = function (token) {
-  console.log('token is:', token)
   api.stripeCheckout(token)
     .then(() => api.closeOrder())
     .then(() => api.createOrder())
