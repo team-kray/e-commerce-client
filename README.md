@@ -45,19 +45,19 @@ Throughout the project we had daily standups and used mob programming and pair p
 ### User Stories
 
 #### Authorization Features:
-As an unregistered user, I would like to sign up with email and password.
-As a registered user, I would like to sign in with email and password.
-As a signed in user, I would like to change password.
-As a signed in user, I would like to sign out.
+1. As an unregistered user, I would like to sign up with email and password.
+2. As a registered user, I would like to sign in with email and password.
+3. As a signed in user, I would like to change password.
+4. As a signed in user, I would like to sign out.
 
 #### Main Features:
-As an unregistered user, I would like to see all of the products.
-As a signed in user, I would like to add and remove products from a shopping cart.
-As a signed in user, I would like to purchase products in a shopping cart using Stripe.
-As a signed in user, I would like to see all my past orders.
+5. As an unregistered user, I would like to see all of the products.
+6. As a signed in user, I would like to add and remove products from a shopping cart.
+7. As a signed in user, I would like to purchase products in a shopping cart using Stripe.
+8. As a signed in user, I would like to see all my past orders.
 
 #### Extra Features (if there is time):
-Build a search feature so that people can search for specific products by name
+9. Build a search feature so that people can search for specific products by name
 
 ### Routes
 
@@ -72,6 +72,18 @@ Build a search feature so that people can search for specific products by name
 - PATCH /orders/:id orders#update
 
 ## Challenges
+
+### Stripe
+
+The stripe documentation was pretty confusing to sort through. We spent a lot of time figuring out where to set up stripe in our files, and what pieces were necessary from the docs. We watched several tutorials and were able to get it working on the third day! 
+
+### Seeding documents into Heroku
+
+We were considering creating a seed button with admin privilleges that we could click to populate the store with items. We ended up figuring out how to use mLab to add documents to the database, and that worked very well. 
+
+### Remove item from cart
+
+This feature was confuding because it seems like we should be 'deleting' something, but really we are using a PATCH route to update the cart by remove an item from the order's items array. We had to troubleshoot a lot of bugs related to this feature. 
 
 ## Future Thinking
 
