@@ -69,6 +69,8 @@ const addHandlers = function () {
   $('.view-orders').on('click', onGetClosedOrders)
   $('#view-cart-modal').on('click', '.remove-from-cart', onDeleteOrderItem)
   $('.checkout').hide()
+  $('.view-orders').hide()
+  $('.view-cart').hide()
 }
 
 module.exports = {
