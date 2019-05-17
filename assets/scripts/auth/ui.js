@@ -26,7 +26,6 @@ const signInSuccess = function (data) {
   $('#sign-up').hide()
   $('#sign-in').hide()
   store.user = data.user
-  console.log(data.user)
   $('.messages').text(`Welcome!`).show()
   setTimeout(() => {
     $('.messages').text('').hide()

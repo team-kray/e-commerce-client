@@ -14,83 +14,89 @@
 
     </head>
     <body>
+      <div class="navbar navbar-light shopname">
+        <h1>THAT HAT</h1>
+     </div>
 
-      <form id="sign-in">
-        <input type="email" name="credentials[email]" placeholder="email" required>
-        <input type="password" name="credentials[password]" placeholder="password">
-        <input type="submit" value="sign in">
-      </form>
+      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <form id="sign-in">
+          <input type="email" name="credentials[email]" placeholder="email" required>
+          <input type="password" name="credentials[password]" placeholder="password">
+          <input type="submit" value="sign in">
+        </form>
 
-      <form id="sign-up">
-        <input type="email" name="credentials[email]" placeholder="email" required>
-        <input type="password" name="credentials[password]" placeholder="password">
-        <input type="password" name="credentials[password_confirmation]" placeholder="password confirmation">
-        <input type="submit" value="sign up">
-      </form>
+        <form id="sign-up">
+          <input type="email" name="credentials[email]" placeholder="email" required>
+          <input type="password" name="credentials[password]" placeholder="password">
+          <input type="password" name="credentials[password_confirmation]" placeholder="password confirmation">
+          <input type="submit" value="sign up">
+        </form>
 
-      <form id="sign-out">
-        <input type="submit" value="sign out">
-      </form>
+        <form id="sign-out">
+          <input type="submit" value="sign out">
+        </form>
 
-      <form id="change-password">
-        <input type="password" name="passwords[old]" placeholder="oldpassword">
-        <input type="password" name="passwords[new]" placeholder="newpassword">
-        <input type="submit" value="change password">
-      </form>
+        <form id="change-password">
+          <input type="password" name="passwords[old]" placeholder="oldpassword">
+          <input type="password" name="passwords[new]" placeholder="newpassword">
+          <input type="submit" value="change password">
+        </form>
+
+        <!-- Button trigger modal view cart-->
+        <button type="button" class="view-cart btn btn-primary" data-toggle="modal" data-target="#view-cart-modal">
+          View Cart
+        </button>
+
+        <!-- Cart Modal -->
+        <div class="modal fade" id="view-cart-modal" tabindex="-1" role="dialog" aria-labelledby="view-cart-modal-aria" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="view-cart-modal-aria">Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- cart injected with handlebars -->
+                <div class="cart">Cart empty!</div>
+                <button class="checkout">Checkout</button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Button trigger modal for view orders-->
+        <button type="button" class="view-orders btn btn-primary" data-toggle="modal" data-target="#modal-show">
+          My Orders
+        </button>
+
+         <!--MODAL SHOW ORDERS-->
+        <div id="modal-show" class="modal fade modal-xl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Past Orders</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div id="orders" class="orders"></div>
+              </div>
+          </div>
+        </div>
+        </div>
+      </nav>
 
       <div id="messages" class="messages">
       </div>
 
-      <!-- Button trigger modal view cart-->
-      <button type="button" class="view-cart btn btn-primary" data-toggle="modal" data-target="#view-cart-modal">
-        View Cart
-      </button>
-
-      <!-- Cart Modal -->
-      <div class="modal fade" id="view-cart-modal" tabindex="-1" role="dialog" aria-labelledby="view-cart-modal-aria" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="view-cart-modal-aria">Cart</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <!-- cart injected with handlebars -->
-              <div class="cart">Cart empty!</div>
-              <button class="checkout">Checkout</button>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Button trigger modal for view orders-->
-      <button type="button" class="view-orders btn btn-primary" data-toggle="modal" data-target="#modal-show">
-        My Orders
-      </button>
-
-       <!--MODAL SHOW ORDERS-->
-      <div id="modal-show" class="modal fade modal-xl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Past Orders</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div id="orders" class="orders"></div>
-            </div>
-        </div>
-      </div>
-      </div>
-
-      <div id="items" class="items">
+      <div class="container">
+        <div id="items" class="items row" ></div>
       </div>
 
     </body>

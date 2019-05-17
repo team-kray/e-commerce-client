@@ -1,1 +1,16 @@
 @import '~bootstrap/scss/bootstrap';
+
+.hidden {
+ display: none;
+}
+
+.messages {
+  height: 50px;
+}
+
+.shopname {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

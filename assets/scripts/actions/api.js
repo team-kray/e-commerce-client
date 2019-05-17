@@ -52,7 +52,9 @@ const deleteFromCart = function () {
     },
     data: {
       'order': {
-        'items': store.currentOrder.order.items
+        'items': {
+          'item': store.itemObj.item
+        }
       }
     }
   })
@@ -88,16 +90,6 @@ const createOrder = function () {
   })
 }
 
-const getCurrentOrder = function () {
-  return $.ajax({
-    url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
-    method: 'GET',
-    headers: {
-      authorization: 'Token token=' + store.user.token
-    }
-  })
-}
-
 const stripeCheckout = (token) => {
   return $.ajax({
     url: config.apiUrl + '/charge',
@@ -122,16 +114,6 @@ const getClosedOrders = function () {
   })
 }
 
-// const deleteOrderItem = function () {
-//   return $.ajax({
-//     url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
-//     method: 'PATCH',
-//     headers: {
-//       authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
-
 module.exports = {
   getItems,
   getItem,
@@ -139,9 +121,7 @@ module.exports = {
   addToCart,
   deleteFromCart,
   createOrder,
-  getCurrentOrder,
   stripeCheckout,
   closeOrder,
   getClosedOrders
-  // deleteOrderItem
 }
