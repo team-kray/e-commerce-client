@@ -29,6 +29,7 @@ const addToCartSuccess = function () {
 
 const getItemToRemoveSuccess = function (data) {
   store.itemObj = data
+  store.cartSum -= store.itemObj.item.price
   const itemsArray = store.currentOrder.order.items
   const itemToRemove = data.item._id
   const newItemsArray = itemsArray.filter(i => i._id !== itemToRemove)
