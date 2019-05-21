@@ -46,8 +46,8 @@ const onCheckout = (event) => {
 }
 
 const onGetClosedOrders = function (event) {
-  const id = $(event.target).data('id')
-  api.getClosedOrders(id)
+  // const id = $(event.target).data('id')
+  api.getClosedOrders()
     .then(ui.getClosedOrdersSuccess)
     .catch(ui.failure)
 }
