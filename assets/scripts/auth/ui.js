@@ -28,6 +28,7 @@ const signInSuccess = function (data) {
   $('.view-orders').show()
   $('.view-cart').show()
   store.user = data.user
+  console.log(store.user)
   $('.messages').text(`Welcome!`).show()
   setTimeout(() => {
     $('.messages').text('').hide()
