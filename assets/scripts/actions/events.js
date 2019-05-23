@@ -14,7 +14,8 @@ const onaddToCart = (event) => {
   event.preventDefault()
   const id = $(event.target).data('id')
   // $(`data-id-${id}`).remove()
-  $(`.addToCart[data-id=${id}]`).hide()
+  $(`.add-to-cart[data-id=${id}]`).hide()
+  $(`.card[data-id=${id}]`).fadeTo('slow', 0.33)
   api.getItem(id)
     .then(ui.getItemSuccess)
     .then(api.addToCart)
@@ -45,8 +46,8 @@ const onCheckout = (event) => {
 }
 
 const onGetClosedOrders = function (event) {
-  const id = $(event.target).data('id')
-  api.getClosedOrders(id)
+  // const id = $(event.target).data('id')
+  api.getClosedOrders()
     .then(ui.getClosedOrdersSuccess)
     .catch(ui.failure)
 }
@@ -54,6 +55,8 @@ const onGetClosedOrders = function (event) {
 const onDeleteOrderItem = (event) => {
   event.preventDefault()
   const id = $(event.target).data('id')
+  $(`.add-to-cart[data-id=${id}]`).show()
+  $(`.card[data-id=${id}]`).fadeTo('slow', 1)
   api.getItem(id)
     .then(ui.getItemToRemoveSuccess)
     .then(api.deleteFromCart)

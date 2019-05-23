@@ -17,14 +17,22 @@ const createOrderSuccess = function (data) {
   $('.checkout').hide()
   store.currentOrder = data
   store.cartSum = 0
+  const numItemsInCart = store.currentOrder.order.items.length
+  $('.view-cart').html('View Cart (' + numItemsInCart + ')')
   $('.cart').empty()
+  $('.cart').html('Your cart is empty.')
+  $('.card').fadeTo('slow', 1)
+  $('.add-to-cart').show()
 }
 
 const addToCartSuccess = function () {
   $('.checkout').show()
   store.currentOrder.order.items.push(store.itemObj.item)
   const showCartHtml = showCartTemplate({ items: store.currentOrder.order.items })
+  const numItemsInCart = store.currentOrder.order.items.length
+  $('.view-cart').html('View Cart (' + numItemsInCart + ')')
   $('.cart').html(showCartHtml)
+  $('.item-added-to-cart').modal('show')
 }
 
 const getItemToRemoveSuccess = function (data) {
@@ -37,11 +45,15 @@ const getItemToRemoveSuccess = function (data) {
 }
 
 const deleteFromCartSuccess = function () {
+  const numItemsInCart = store.currentOrder.order.items.length
+  $('.view-cart').html('View Cart (' + numItemsInCart + ')')
+  $('.item-removed-from-cart').modal('show')
   if (store.currentOrder.order.items.length > 0) {
     const showCartHtml = showCartTemplate({ items: store.currentOrder.order.items })
     $('.cart').html(showCartHtml)
   } else {
     $('.cart').empty()
+    $('.cart').html('Your cart is empty.')
     $('.checkout').hide()
   }
 }

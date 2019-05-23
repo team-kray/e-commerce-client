@@ -62,7 +62,7 @@ const deleteFromCart = function () {
 
 const closeOrder = function () {
   return $.ajax({
-    url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
+    url: config.apiUrl + `/orders/close/${store.currentOrder.order._id}`,
     method: 'PATCH',
     headers: {
       authorization: 'Token token=' + store.user.token

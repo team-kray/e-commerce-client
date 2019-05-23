@@ -77,6 +77,7 @@ const signOutSuccess = function () {
     $('.messages').text(' ').hide()
   }, 2000)
   $('.hidden').hide()
+  $('.card').fadeTo('slow', 1)
 }
 
 const signOutFailure = function () {
