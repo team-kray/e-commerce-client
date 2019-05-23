@@ -18,7 +18,6 @@ const createOrderSuccess = function (data) {
   store.currentOrder = data
   store.cartSum = 0
   const numItemsInCart = store.currentOrder.order.items.length
-  console.log(numItemsInCart)
   $('.view-cart').html('View Cart (' + numItemsInCart + ')')
   $('.cart').empty()
   $('.cart').html('Your cart is empty.')
@@ -31,7 +30,6 @@ const addToCartSuccess = function () {
   store.currentOrder.order.items.push(store.itemObj.item)
   const showCartHtml = showCartTemplate({ items: store.currentOrder.order.items })
   const numItemsInCart = store.currentOrder.order.items.length
-  console.log(numItemsInCart)
   $('.view-cart').html('View Cart (' + numItemsInCart + ')')
   $('.cart').html(showCartHtml)
   $('.item-added-to-cart').modal('show')
@@ -48,7 +46,6 @@ const getItemToRemoveSuccess = function (data) {
 
 const deleteFromCartSuccess = function () {
   const numItemsInCart = store.currentOrder.order.items.length
-  console.log(numItemsInCart)
   $('.view-cart').html('View Cart (' + numItemsInCart + ')')
   $('.item-removed-from-cart').modal('show')
   if (store.currentOrder.order.items.length > 0) {
