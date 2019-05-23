@@ -1,21 +1,24 @@
 {{#each items as |item|}}
   <section data-id="{{item._id}}">
-    <div class="card text-grey bg-light col-12">
+    <div data-id="{{item._id}}" class="card text-grey bg-light col-12">
 
-    <h6>Item</h6>
-    <h3>
-    {{item.name}}
-    </h3>
+      <ul>
+      <li>
+        <h5>Item:</h5>
+          <h3>
+          {{item.name}}
+          </h3>
+      </li>
+      <li>
+        <h5>Price:</h5>
+          <h3>
+            ${{item.price}}
+          </h3>
+      </li>
 
-    <h6>Price</h6>
-    <h3>
-      {{item.price}}
-    </h3>
-
-    <h6>Description</h6>
-    <p>
-      {{item.description}}
-    </p>
+      <p>
+        {{item.description}}
+      </p>
 
 <!-- //photo -->
     <p class="photos">
