@@ -57,11 +57,16 @@ const onDeleteOrderItem = (event) => {
   const id = $(event.target).data('id')
   $(`.add-to-cart[data-id=${id}]`).show()
   $(`.card[data-id=${id}]`).fadeTo('slow', 1)
-  api.getItem(id)
-    .then(ui.getItemToRemoveSuccess)
-    .then(api.deleteFromCart)
-    .then(ui.deleteFromCartSuccess)
-    .catch(ui.failure)
+  if (store.currentOrder.order.items.length <= 1) {
+    api.createOrder()
+      .then(ui.createOrderSuccess)
+  } else {
+    api.getItem(id)
+      .then(ui.getItemToRemoveSuccess)
+      .then(api.deleteFromCart)
+      .then(ui.deleteFromCartSuccess)
+      .catch(ui.failure)
+  }
 }
 
 const addHandlers = function () {
