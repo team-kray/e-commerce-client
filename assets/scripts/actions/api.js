@@ -45,16 +45,14 @@ const addToCart = function () {
 
 const deleteFromCart = function () {
   return $.ajax({
-    url: config.apiUrl + `/orders/${store.currentOrder.order._id}`,
+    url: config.apiUrl + `/orders/delete/${store.currentOrder.order._id}`,
     method: 'PATCH',
     headers: {
       authorization: 'Token token=' + store.user.token
     },
     data: {
       'order': {
-        'items': {
-          'item': store.itemObj.item
-        }
+        'items': store.currentOrder.order.items
       }
     }
   })
